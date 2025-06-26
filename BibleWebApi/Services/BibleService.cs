@@ -50,8 +50,8 @@ public class BibleService : IBibleService
 
     public async Task<IEnumerable<VerseModel>> GetVersesAsync(int bookId, int chapterNumber, params int[] versesNumbers)
     {
-        var book = await _context.Books.FirstOrDefaultAsync(x => x.Id == bookId)
-            ?? throw new Exception("Book not found.");
+        //var book = await _context.Books.FirstOrDefaultAsync(x => x.Id == bookId)
+        //    ?? throw new Exception("Book not found.");
 
         var verses = _context.Verses.Where(x => x.BookId == bookId && x.ChapterNumber == chapterNumber);
 
@@ -64,8 +64,8 @@ public class BibleService : IBibleService
             verses = versesAux;
         }
 
-        foreach (var verse in verses)
-            verse.Book = book;
+        //foreach (var verse in verses)
+        //    verse.Book = book;
 
         return verses;
     }
